@@ -1,0 +1,14 @@
+In fisierul so_stdio.c am implementat functiile specificate in enunt, cu
+exceptia celor asociate proceselor (am incercat o implementare, dar era
+eronata). Pentru a asigura toate functionalitatile specifice, am folosit
+o structura _so_file cu mai multe campuri pentru a putea trata corespunzator
+cazurile diverse ce pot aparea ca urmare a utilizarii acesteia in combinatie
+cu apelurile de sistem. Printre aceste campuri se numara 2 buffere, unul de
+scriere si unul de citire, pozitiile pe care se efectueaza scrierea/ citirea
+pentru fiecare dintre cele 2 buffere, un indicator pentru eroare, un indicator
+pentru sfarsitul fisierului si inca unul pentru ultima operatie efectuata, ce
+urmeaza sa fie folosit pentru operatiile de seek.
+Functiile elementare pentru lucrul cu stream-ul sunt so_fgetc si so_fputc,
+care sunt gandite sa lucreze byte cu byte cu bufferele asociate stream-ului.
+Folosind aceste functii, am implementat so_fwrite si so_fread ca apeluri
+succesive ale functiilor mai simple, tratand cazurile de eroare ce pot aparea.
